@@ -3,191 +3,466 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lipik: speak, and it writes it down</title>
-  <meta name="description" content="Hold fn, speak, and clean text lands wherever you are typing. Free, open source, and your voice stays on your Mac.">
+  <title>Lipik: speak freely, and it writes it down</title>
+  <meta name="description" content="Hold fn, speak, and clean text appears wherever your cursor is. Free, open-source dictation for Mac that runs entirely on your Mac.">
+  <meta name="theme-color" content="#fbf9f4">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,400..650&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
-  <header class="nav wrap">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" id="nav">
     <a class="brand" href="#top" aria-label="Lipik home">
       <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><g stroke="currentColor" stroke-linecap="round" fill="none"><path d="M3 5.4h18" stroke-width="2.6"/><path d="M6.5 6.4v4.6M10.5 6.4v11.6M14.5 6.4v7.4M18.5 6.4v3" stroke-width="2.3"/></g></svg>
       <span>Lipik</span>
     </a>
     <nav aria-label="Sections">
+      <a href="#clean">Clean-up</a>
+      <a href="#features">Features</a>
       <a href="#how">How it works</a>
-      <a href="#features">What it does</a>
-      <a href="#private">Privacy</a>
-      <a href="#faq">Questions</a>
+      <a href="#open">Open source</a>
+      <a href="#faq">FAQ</a>
     </nav>
-    <a class="btn btn-ink btn-sm" href="#download">Download for Mac</a>
+    <a class="btn btn-ink btn-sm" href="#download">Download<span class="hide-sm">&nbsp;for Mac</span></a>
   </header>
 
-  <main id="top">
-    <section class="hero wrap">
-      <div class="rule" aria-hidden="true"></div>
-      <div class="headline-block">
-        <h1 class="hang">
-          <span>Speak.</span>
-          <span>Lipik writes</span>
-          <span>it down.</span>
-        </h1>
-        <p class="lede">Hold <kbd>fn</kbd>, say it however it comes out, and clean text lands wherever you're typing. In any app, in English or Hinglish.</p>
-        <div class="cta-row">
-          <a class="btn btn-ink" href="#download">Download for Mac</a>
-          <a class="btn btn-quiet" href="#how">See how it works</a>
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top" aria-labelledby="hero-h">
+      <div class="wrap">
+        <div class="hero-rule" aria-hidden="true">
+          <span class="line"></span>
+          <span class="drops"><i></i><i></i><i></i><i></i></span>
         </div>
-        <p class="fineprint">Free and open source. Your voice stays on your Mac.</p>
+        <div class="hero-head">
+          <h1 id="hero-h">Speak freely. Lipik writes it down.</h1>
+          <div class="hero-side">
+            <p class="lede">Hold <kbd>fn</kbd> and talk the way you talk. Clean, punctuated text appears wherever your cursor is, in any app and in your language.</p>
+            <div class="cta-row">
+              <a class="btn btn-ink" href="#download">Download for Mac</a>
+              <a class="btn btn-line" href="#how">See how it works</a>
+            </div>
+            <p class="fineprint">Free and open source, for Macs with Apple silicon.</p>
+          </div>
+        </div>
       </div>
 
-      <figure class="demo" aria-label="Lipik turning spoken words into clean text">
-        <div class="window">
-          <div class="window-bar">
-            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="app" id="demo-app">Slack · #launch</span>
-          </div>
-          <div class="window-body">
-            <div class="thread" aria-hidden="true">
-              <div class="msg"><b>Meera</b><span>Are we still on for the call today?</span></div>
+      <div class="wrap wrap-wide">
+        <figure class="stage" id="stage">
+          <div class="screen-frame" id="screen-frame" aria-hidden="true">
+            <div class="screen" id="screen">
+              <svg class="wallpaper" viewBox="0 0 1120 700" preserveAspectRatio="xMidYMid slice">
+                <rect width="1120" height="700" fill="#2c5f48"/>
+                <circle cx="1000" cy="318" r="66" fill="#efe5cf"/>
+                <path d="M0 430 C 180 360 330 400 470 360 S 790 250 1120 330 V700 H0Z" fill="#3f7a5c"/>
+                <path d="M0 520 C 210 470 380 520 560 470 S 900 420 1120 470 V700 H0Z" fill="#285a44"/>
+                <path d="M0 610 C 260 570 480 620 700 580 S 1000 560 1120 590 V700 H0Z" fill="#1f4836"/>
+              </svg>
+
+              <div class="menubar">
+                <span class="mb-left">
+                  <svg class="mb-glyph" viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.6" fill="currentColor"/></svg>
+                  <b id="mb-app">Slack</b><span class="mb-menus"><span>File</span><span>Edit</span><span>View</span><span>Window</span><span>Help</span></span>
+                </span>
+                <span class="mb-right">
+                  <svg class="mb-lipik" id="mb-lipik" viewBox="0 0 24 24"><g stroke="currentColor" stroke-linecap="round" fill="none"><path d="M3 5.4h18" stroke-width="2.6"/><path d="M6.5 6.4v4.6M10.5 6.4v11.6M14.5 6.4v7.4M18.5 6.4v3" stroke-width="2.3"/></g></svg>
+                  <svg class="mb-wifi" viewBox="0 0 20 16"><path d="M10 14.2l2.4-2.9a3.6 3.6 0 0 0-4.8 0zM4.6 8.1l1.6 1.9a6 6 0 0 1 7.6 0l1.6-1.9a8.5 8.5 0 0 0-10.8 0zM1.4 4.2 3 6.2a11 11 0 0 1 14 0l1.6-2a13.6 13.6 0 0 0-17.2 0z" fill="currentColor"/></svg>
+                  <span class="mb-batt"><i></i></span>
+                  <span class="mb-clock">Mon 10:42</span>
+                </span>
+              </div>
+
+              <!-- Chat app -->
+              <div class="win win-chat is-on" data-win="chat">
+                <div class="win-bar"><span class="lights"><i></i><i></i><i></i></span><span class="win-title"># launch</span></div>
+                <div class="win-body">
+                  <div class="chat-side">
+                    <p class="cs-team">Northwind</p>
+                    <p class="cs-head">Channels</p>
+                    <p class="cs-item is-active"># launch</p>
+                    <p class="cs-item"># design</p>
+                    <p class="cs-item"># general</p>
+                    <p class="cs-head">Direct messages</p>
+                    <p class="cs-item"><span class="av av-a"></span>Meera</p>
+                    <p class="cs-item"><span class="av av-b"></span>Arjun</p>
+                  </div>
+                  <div class="chat-main">
+                    <div class="chat-msg"><span class="av av-b lg"></span><div><p><b>Arjun</b><time>10:31</time></p><p>Slides are in the shared folder.</p></div></div>
+                    <div class="chat-msg"><span class="av av-c lg"></span><div><p><b>Kabir</b><time>10:36</time></p><p>I'll share the demo build after lunch.</p></div></div>
+                    <div class="chat-msg"><span class="av av-a lg"></span><div><p><b>Meera</b><time>10:40</time></p><p>Are we still on for the call today?</p></div></div>
+                    <div class="field chat-field"><span class="slot" data-slot></span><span class="caret"></span><span class="ph">Message #launch</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mail -->
+              <div class="win win-mail" data-win="mail">
+                <div class="win-bar"><span class="lights"><i></i><i></i><i></i></span><span class="win-title">Re: Final deck</span></div>
+                <div class="win-body mail-body">
+                  <p class="mail-row"><span>To</span>Arjun Rao</p>
+                  <p class="mail-row"><span>Subject</span>Re: Final deck</p>
+                  <div class="field mail-field"><span class="slot" data-slot></span><span class="caret"></span></div>
+                  <div class="mail-quote"><p>On Mon, Arjun Rao wrote:</p><p>Where should I send the final deck once it's ready?</p></div>
+                </div>
+              </div>
+
+              <!-- Notes -->
+              <div class="win win-notes" data-win="notes">
+                <div class="win-bar"><span class="lights"><i></i><i></i><i></i></span><span class="win-title">Notes</span></div>
+                <div class="win-body">
+                  <div class="notes-side">
+                    <p class="ns-item is-active"><b>Voyage à Lyon</b><span>Today</span></p>
+                    <p class="ns-item"><b>Groceries</b><span>Yesterday</span></p>
+                    <p class="ns-item"><b>Book list</b><span>Friday</span></p>
+                  </div>
+                  <div class="notes-main">
+                    <p class="notes-title">Voyage à Lyon</p>
+                    <p class="notes-line">Hôtel près de la gare, deux nuits.</p>
+                    <div class="field notes-field"><span class="slot" data-slot></span><span class="caret"></span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Messages -->
+              <div class="win win-dm" data-win="dm">
+                <div class="win-bar"><span class="lights"><i></i><i></i><i></i></span><span class="win-title">Kabir</span></div>
+                <div class="win-body dm-body">
+                  <p class="bubble">Kal ka standup kitne baje hai?</p>
+                  <p class="bubble">Mujhe 9:30 tak call hai</p>
+                  <div class="field dm-field"><span class="slot" data-slot></span><span class="caret"></span><span class="ph">Message</span></div>
+                </div>
+              </div>
+
+              <div class="said" id="said"><span class="said-label">You say</span><span class="said-words" id="said-words"></span></div>
+
+              <div class="pill" id="pill" data-state="idle">
+                <span class="pill-dot"></span>
+                <span class="wave" data-wave="9"></span>
+                <span class="pill-think"><i></i><i></i><i></i></span>
+              </div>
             </div>
-            <div class="said" id="demo-said" aria-live="off"></div>
-            <div class="compose">
-              <span class="typed" id="demo-typed"></span><span class="caret" aria-hidden="true"></span>
-              <span class="placeholder" id="demo-ph">Message #launch</span>
-            </div>
           </div>
-          <div class="pill-zone" aria-hidden="true">
-            <div class="pill" id="demo-pill" data-state="idle">
-              <span class="dot"></span>
-              <span class="bars"></span>
-              <span class="spin"></span>
-            </div>
-          </div>
+          <figcaption class="stage-cap">
+            <kbd class="key key-sm" id="fn-key" aria-hidden="true">fn</kbd>
+            <span>Hold fn, speak, let go. The pill at the bottom shows Lipik is listening.</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Apps -->
+    <section class="apps" aria-labelledby="apps-h">
+      <div class="wrap">
+        <h2 id="apps-h" class="apps-h">Works in every app where you can type</h2>
+      </div>
+      <div class="marquee">
+        <ul class="marquee-track">
+          <li>Slack</li><li>Gmail</li><li>Notes</li><li>Notion</li><li>VS Code</li><li>Cursor</li><li>ChatGPT</li><li>WhatsApp</li><li>Linear</li><li>Mail</li><li>Google Docs</li><li>Figma</li><li>Messages</li><li>Obsidian</li>
+        </ul>
+        <ul class="marquee-track" aria-hidden="true">
+          <li>Slack</li><li>Gmail</li><li>Notes</li><li>Notion</li><li>VS Code</li><li>Cursor</li><li>ChatGPT</li><li>WhatsApp</li><li>Linear</li><li>Mail</li><li>Google Docs</li><li>Figma</li><li>Messages</li><li>Obsidian</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Messy to clean -->
+    <section class="section clean" id="clean" aria-labelledby="clean-h">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="clean-h">Say it messy. Get it clean.</h2>
+          <p class="section-lede">Lipik drops the ums, follows you when you change your mind, and writes numbers, times and email addresses the way you'd type them. It doesn't add words you didn't say.</p>
         </div>
-        <figcaption id="demo-caption">What you said, and what Lipik typed.</figcaption>
-      </figure>
-    </section>
 
-    <section class="messy wrap" aria-labelledby="messy-h">
-      <h2 id="messy-h">Say it messy. It comes out clean.</h2>
-      <p class="section-lede">Lipik drops the ums, keeps the change of mind, and fixes punctuation, numbers and email addresses. It never adds words you didn't say.</p>
-      <ul class="pairs">
-        <li>
-          <p class="spoken">hey can we, <s>um,</s> move the call to <s>four, no,</s> five</p>
-          <p class="written">Hey, can we move the call to 5?</p>
-        </li>
-        <li>
-          <p class="spoken">send it to rivaan underscore m at quavia dot com</p>
-          <p class="written">Send it to rivaan_m@quavia.com</p>
-        </li>
-        <li>
-          <p class="spoken">meet at three thirty pm tomorrow</p>
-          <p class="written">Meet at 3:30 PM tomorrow.</p>
-        </li>
-        <li>
-          <p class="spoken"><s>uh</s> kal ka demo friday ko shift kar dete hain</p>
-          <p class="written">Kal ka demo Friday ko shift kar dete hain.</p>
-        </li>
-      </ul>
-    </section>
-
-    <section class="how wrap" id="how" aria-labelledby="how-h">
-      <h2 id="how-h">How it works</h2>
-      <ol class="steps">
-        <li>
-          <span class="n">1</span>
-          <h3>Hold <kbd>fn</kbd></h3>
-          <p>Put your cursor where the text should go: a message, an email, a doc, a prompt. Hold the fn key.</p>
-        </li>
-        <li>
-          <span class="n">2</span>
-          <h3>Speak</h3>
-          <p>Talk the way you'd talk to a friend. Pause, ramble, correct yourself. The small bar at the bottom of your screen shows it's listening.</p>
-        </li>
-        <li>
-          <span class="n">3</span>
-          <h3>Let go</h3>
-          <p>About half a second later the cleaned-up text is typed in. If there's no text box, Lipik shows it in a card so you can copy it.</p>
-        </li>
-      </ol>
-    </section>
-
-    <section class="features wrap" id="features" aria-labelledby="features-h">
-      <h2 id="features-h">What it does</h2>
-      <dl class="feature-list">
-        <div><dt>Works in every app</dt><dd>Slack, Mail, Notes, your browser, your code editor. Anywhere you can type.</dd></div>
-        <div><dt>Cleans up as it types</dt><dd>Removes fillers, applies "no, wait" corrections, and writes numbers, times and emails the way you'd type them.</dd></div>
-        <div><dt>Your words, spelled right</dt><dd>Add names and terms once, like Kubernetes or Thiruvananthapuram, and they come out right every time.</dd></div>
-        <div><dt>Snippets</dt><dd>Say "my address" or "meeting link" and get the full text you saved.</dd></div>
-        <div><dt>Tone per app</dt><dd>Relaxed in chat, proper in email. You choose for each kind of app.</dd></div>
-        <div><dt>Meeting notes</dt><dd>Record a call and get a transcript and a short summary, made on your Mac.</dd></div>
-        <div><dt>Hinglish, in Roman letters <span class="tag">Beta</span></dt><dd>Mix Hindi and English the way you speak. Lipik writes it in Roman letters, not Devanagari.</dd></div>
-        <div><dt>Hands-free</dt><dd>Press fn and Space to keep talking without holding a key.</dd></div>
-      </dl>
-    </section>
-
-    <section class="private" id="private" aria-labelledby="private-h">
-      <div class="wrap private-inner">
-        <h2 id="private-h">Your voice never leaves your Mac.</h2>
-        <div class="private-copy">
-          <p>Speech is turned into text by a model that runs on your Mac. The clean-up runs on your Mac too. Nothing is uploaded, there's no account, and it keeps working with Wi-Fi off.</p>
-          <ul class="facts">
-            <li><b>Speech model</b><span>Parakeet, running on your Mac's GPU</span></li>
-            <li><b>Clean-up</b><span>Qwen3 8B through Ollama, on your Mac</span></li>
-            <li><b>Your history</b><span>Saved in a file on your Mac. Delete it any time.</span></li>
+        <div class="clean-card">
+          <div class="tabs" role="tablist" aria-label="Examples" id="clean-tabs"></div>
+          <div class="clean-panel" id="clean-panel" role="tabpanel">
+            <div class="clean-said">
+              <p class="clean-label">You say</p>
+              <p class="clean-spoken" id="clean-spoken"></p>
+            </div>
+            <div class="clean-arrow" aria-hidden="true">
+              <svg viewBox="0 0 40 12"><path d="M0 6h36M31 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="clean-typed">
+              <p class="clean-label">Lipik types</p>
+              <p class="clean-result" id="clean-result"></p>
+            </div>
+          </div>
+          <ul class="legend" aria-label="Key">
+            <li><span class="sw sw-drop"></span>Filler, dropped</li>
+            <li><span class="sw sw-fix"></span>Changed your mind</li>
+            <li><span class="sw sw-turn"></span>Written as a number or symbol</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="open wrap" aria-labelledby="open-h">
-      <h2 id="open-h"><span class="deva" lang="hi">लिपिक</span> means scribe.</h2>
-      <p class="section-lede">Lipik is free and open source under the MIT licence. It's built on <a href="https://github.com/cjpais/Handy">Handy</a> by CJ Pais, a free dictation app, with a new interface, text clean-up, Hinglish support and meeting notes added on top.</p>
-    </section>
+    <!-- Features -->
+    <section class="section features" id="features" aria-labelledby="features-h">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="features-h">Small touches that save a lot of typing.</h2>
+          <p class="section-lede">Everything below runs on your Mac. The cards are live, so try them.</p>
+        </div>
 
-    <section class="faq wrap" id="faq" aria-labelledby="faq-h">
-      <h2 id="faq-h">Questions</h2>
-      <div class="faq-list">
-      <details>
-        <summary>What do I need?</summary>
-        <p>A Mac with Apple silicon (M1 or later). For the clean-up step, the free <a href="https://ollama.com">Ollama</a> app with the Qwen3 8B model, about 5 GB. Without it, Lipik still types what you said, with simple fixes for punctuation and numbers.</p>
-      </details>
-      <details>
-        <summary>Does it cost anything?</summary>
-        <p>No. There's no subscription, no word limit and no account.</p>
-      </details>
-      <details>
-        <summary>Does it work on Windows?</summary>
-        <p>Not yet. Lipik is Mac-only for now.</p>
-      </details>
-      <details>
-        <summary>How good is Hinglish?</summary>
-        <p>It's in beta. English is the most accurate today. Hinglish works best when you speak clearly and close to the microphone, and it's improving with each release.</p>
-      </details>
-      <details>
-        <summary>Why does macOS ask for Microphone and Accessibility?</summary>
-        <p>Microphone so Lipik can hear you, and Accessibility so it can type into other apps and notice when you hold fn. Lipik doesn't send what it hears anywhere.</p>
-      </details>
-      <details>
-        <summary>Can I change the key?</summary>
-        <p>Yes. Pick any shortcut in Settings. Holding fn is the default because it doesn't get in the way of anything else.</p>
-      </details>
+        <div class="bento">
+          <!-- Tone -->
+          <article class="card card-tone" aria-labelledby="tone-h">
+            <div class="card-copy">
+              <h3 id="tone-h">The right tone for each app</h3>
+              <p>Choose formal, relaxed or lowercase for each kind of app. Email stays proper while chat stays casual.</p>
+            </div>
+            <div class="mock tone-mock">
+              <div class="seg" role="radiogroup" aria-label="Tone" id="tone-seg">
+                <button type="button" role="radio" aria-checked="true" data-tone="formal"><span>Formal</span><small>Mail</small></button>
+                <button type="button" role="radio" aria-checked="false" data-tone="relaxed" tabindex="-1"><span>Relaxed</span><small>Slack</small></button>
+                <button type="button" role="radio" aria-checked="false" data-tone="lower" tabindex="-1"><span>lowercase</span><small>Messages</small></button>
+              </div>
+              <div class="tone-out">
+                <p class="tone-said"><span class="said-label">You say</span>hey are we still good for friday i can bring the slides</p>
+                <p class="tone-text" id="tone-text">Hi, are we still on for Friday? I can bring the slides.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Languages -->
+          <article class="card card-lang" aria-labelledby="lang-h">
+            <div class="card-copy">
+              <h3 id="lang-h">Speaks your language</h3>
+              <p>English out of the box. Free Whisper models cover 99 languages. Hinglish works too, in beta.</p>
+            </div>
+            <div class="mock lang-mock" aria-hidden="true">
+              <ul class="lang-list" id="lang-list">
+                <li lang="en">Hello, how was your day?</li>
+                <li lang="es">Hola, ¿qué tal tu día?</li>
+                <li lang="ja">こんにちは、今日はどうだった？</li>
+                <li lang="hi-Latn">Hi, aaj ka din kaisa raha?</li>
+                <li lang="fr">Bonjour, ta journée s'est bien passée ?</li>
+                <li lang="ar" dir="rtl">مرحبا، كيف كان يومك؟</li>
+                <li lang="ko">안녕하세요, 오늘 하루 어땠어요?</li>
+                <li lang="de">Hallo, wie war dein Tag?</li>
+              </ul>
+              <ul class="lang-tags" id="lang-tags">
+                <li>English</li><li>Español</li><li>日本語</li><li>Hinglish (beta)</li><li>Français</li><li>العربية</li><li>한국어</li><li>Deutsch</li><li class="more">and many more</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Vocabulary -->
+          <article class="card card-vocab" aria-labelledby="vocab-h">
+            <div class="card-copy">
+              <h3 id="vocab-h">Your words, spelled right</h3>
+              <p>Add names and terms once. They come out right every time.</p>
+            </div>
+            <div class="mock vocab-mock">
+              <ul class="chips" id="chips" aria-label="Your vocabulary">
+                <li>Rivaan</li><li>Quavia</li><li>Kubernetes</li><li>Thiruvananthapuram</li>
+              </ul>
+              <button class="chip-add" id="chip-add" type="button"><span aria-hidden="true">+</span> Add word</button>
+              <p class="vocab-line" id="vocab-line">Ask <mark>Rivaan</mark> to move the <mark>Quavia</mark> sync to Thursday.</p>
+            </div>
+          </article>
+
+          <!-- Hands-free -->
+          <article class="card card-free card-dark" aria-labelledby="free-h">
+            <div class="card-copy">
+              <h3 id="free-h">Hands-free</h3>
+              <p>Press fn and Space to keep talking without holding a key.</p>
+            </div>
+            <div class="mock free-mock">
+              <button class="keys" id="free-keys" type="button" aria-pressed="false" aria-label="Try hands-free mode">
+                <kbd class="key">fn</kbd><span class="plus" aria-hidden="true">+</span><kbd class="key key-space">space</kbd>
+              </button>
+              <div class="mini-pill" id="free-pill" aria-hidden="true">
+                <span class="pill-dot"></span><span class="wave" data-wave="7"></span><span class="lock">Hands-free</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Snippets -->
+          <article class="card card-snip" aria-labelledby="snip-h">
+            <div class="card-copy">
+              <h3 id="snip-h">Snippets</h3>
+              <p>Say a short cue and get the full text you saved.</p>
+            </div>
+            <div class="mock snip-mock">
+              <div class="snip-cues" role="radiogroup" aria-label="Snippet cue" id="snip-cues">
+                <button type="button" role="radio" aria-checked="true" data-snip="0">“my address”</button>
+                <button type="button" role="radio" aria-checked="false" data-snip="1" tabindex="-1">“intro”</button>
+                <button type="button" role="radio" aria-checked="false" data-snip="2" tabindex="-1">“sign off”</button>
+              </div>
+              <div class="snip-out" id="snip-out">14 Orchard Lane, Flat 3B<br>Pune 411001</div>
+            </div>
+          </article>
+
+          <!-- Meeting notes -->
+          <article class="card card-notes" aria-labelledby="notes-h">
+            <div class="card-copy">
+              <h3 id="notes-h">Meeting notes</h3>
+              <p>Record a call. Get the transcript and a short summary, made on your Mac.</p>
+            </div>
+            <div class="mock notes-mock">
+              <div class="nm-bar">
+                <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="nm-rec" aria-hidden="true"><span class="pill-dot"></span>Recording 24:18</span>
+              </div>
+              <p class="nm-title">Weekly sync</p>
+              <div class="nm-tabs" role="tablist" aria-label="Meeting notes view" id="nm-tabs">
+                <button type="button" role="tab" aria-selected="true" aria-controls="nm-summary" id="nm-t1">Summary</button>
+                <button type="button" role="tab" aria-selected="false" aria-controls="nm-transcript" id="nm-t2" tabindex="-1">Transcript</button>
+              </div>
+              <div class="nm-panel" id="nm-summary" role="tabpanel" aria-labelledby="nm-t1">
+                <ul>
+                  <li>Launch moves to Friday, 5 PM.</li>
+                  <li>Meera owns the release notes.</li>
+                  <li>Arjun sends the final deck by Thursday.</li>
+                </ul>
+              </div>
+              <div class="nm-panel" id="nm-transcript" role="tabpanel" aria-labelledby="nm-t2" hidden>
+                <p><b>Meera</b> So are we fine with Friday for the launch?</p>
+                <p><b>Arjun</b> Friday works. I'll have the deck done by Thursday.</p>
+                <p><b>Meera</b> Great, I'll write the release notes.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Offline -->
+          <article class="card card-off card-green" aria-labelledby="off-h">
+            <div class="card-copy">
+              <h3 id="off-h">Works with Wi-Fi off</h3>
+              <p>Speech to text and the clean-up both run on your Mac. Nothing is uploaded.</p>
+            </div>
+            <div class="mock off-mock">
+              <div class="off-row">
+                <span class="off-label" id="wifi-label">Wi-Fi</span>
+                <button class="switch" id="wifi" type="button" role="switch" aria-checked="true" aria-labelledby="wifi-label"><span></span></button>
+              </div>
+              <div class="off-field">
+                <span class="off-status" id="off-status">Online</span>
+                <p id="off-text">Notes from the train: the venue is booked for the 14th.</p>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="download wrap" id="download" aria-labelledby="download-h">
-      <img src="assets/icon.png" alt="" width="96" height="96">
-      <h2 id="download-h">Lipik for Mac</h2>
-      <p>Lipik is in private testing. The first public build and the source code are coming soon.</p>
-      <span class="btn btn-ink is-off" aria-disabled="true">Download coming soon</span>
+    <!-- How it works -->
+    <section class="section how" id="how" aria-labelledby="how-h">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="how-h">Three steps, every time.</h2>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <div class="step-vis step-kb" aria-hidden="true">
+              <div class="kb">
+                <div class="kb-row"><kbd class="key key-shift">shift</kbd><kbd class="key">Z</kbd><kbd class="key">X</kbd><kbd class="key">C</kbd></div>
+                <div class="kb-row"><kbd class="key key-fn">fn</kbd><kbd class="key">control</kbd><kbd class="key">option</kbd><kbd class="key key-cmd">command</kbd></div>
+              </div>
+            </div>
+            <p class="step-n">1</p>
+            <h3>Hold fn</h3>
+            <p>Put your cursor where the words should go: a message, an email, a doc, a prompt. Then hold the fn key.</p>
+          </li>
+          <li class="step">
+            <div class="step-vis" aria-hidden="true">
+              <div class="pill pill-static" data-state="listen"><span class="pill-dot"></span><span class="wave" data-wave="9"></span></div>
+            </div>
+            <p class="step-n">2</p>
+            <h3>Speak</h3>
+            <p>Talk the way you would to a friend. Pause, ramble, correct yourself. The pill at the bottom of your screen shows Lipik is listening.</p>
+          </li>
+          <li class="step">
+            <div class="step-vis" aria-hidden="true">
+              <div class="landed"><span>Running ten minutes late, start without me.</span><span class="caret"></span></div>
+            </div>
+            <p class="step-n">3</p>
+            <h3>Let go</h3>
+            <p>The clean text is typed where your cursor is. If no text box is selected, it shows in a small card so you can copy it.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Open source -->
+    <section class="open" id="open" aria-labelledby="open-h">
+      <div class="wrap open-inner">
+        <div class="open-copy">
+          <h2 id="open-h">Free, open source, and yours to keep.</h2>
+          <p>Lipik costs nothing. There's no account, no subscription and no word limit. The code is under the MIT licence, so anyone can read it, change it or build on it.</p>
+          <p>Lipik is built on <a href="https://github.com/cjpais/Handy">Handy</a>, a free dictation app by CJ Pais. Lipik adds a new interface, text clean-up, snippets, tone settings and meeting notes.</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Price</dt><dd>Free</dd></div>
+          <div><dt>Licence</dt><dd>MIT</dd></div>
+          <div><dt>Speech to text</dt><dd>Parakeet by default, on your Mac</dd></div>
+          <div><dt>Clean-up</dt><dd>Qwen3 8B through the free Ollama app, on your Mac</dd></div>
+          <div><dt>Account</dt><dd>None needed</dd></div>
+          <div><dt>Built on</dt><dd><a href="https://github.com/cjpais/Handy">Handy by CJ Pais</a></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="faq" aria-labelledby="faq-h">
+      <div class="wrap faq-inner">
+        <h2 id="faq-h">Questions</h2>
+        <div class="faq-list">
+          <details>
+            <summary>What do I need to run Lipik?</summary>
+            <div class="faq-a"><p>A Mac with Apple silicon (M1 or later). For the clean-up step you also need the free <a href="https://ollama.com">Ollama</a> app with the Qwen3 8B model, which is about 5 GB. Without it, Lipik still types what you said, just without the clean-up.</p></div>
+          </details>
+          <details>
+            <summary>Does it cost anything?</summary>
+            <div class="faq-a"><p>No. Lipik is free, with no subscription, no account and no word limit.</p></div>
+          </details>
+          <details>
+            <summary>Is there a Windows version?</summary>
+            <div class="faq-a"><p>Not yet. Lipik runs on macOS only for now.</p></div>
+          </details>
+          <details>
+            <summary>Which languages does it understand?</summary>
+            <div class="faq-a"><p>English works out of the box with the Parakeet model. For other languages, download one of the free Whisper models in Settings; together they cover 99 languages. Hinglish (Hindi and English mixed, written in Roman letters) works but is still in beta.</p></div>
+          </details>
+          <details>
+            <summary>Why does macOS ask for Microphone and Accessibility access?</summary>
+            <div class="faq-a"><p>Microphone, so Lipik can hear you. Accessibility, so it can notice when you hold fn and type the text into the app you're using. What Lipik hears stays on your Mac.</p></div>
+          </details>
+          <details>
+            <summary>Can I use a different key instead of fn?</summary>
+            <div class="faq-a"><p>Yes. You can pick any shortcut in Settings. Holding fn is the default because it rarely gets in the way of anything else.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download -->
+    <section class="download" id="download" aria-labelledby="download-h">
+      <div class="wrap download-inner">
+        <div class="dl-rule" aria-hidden="true"><span></span></div>
+        <img class="dl-icon" src="assets/icon.png" alt="" width="128" height="128">
+        <h2 id="download-h">Lipik for Mac is coming soon.</h2>
+        <p>Lipik is in private testing. The first public build and the source code will be posted here.</p>
+        <span class="btn btn-ink is-off" aria-disabled="true">Download coming soon</span>
+        <p class="fineprint">Requires macOS on Apple silicon.</p>
+      </div>
     </section>
   </main>
 
-  <footer class="footer wrap">
-    <span>Lipik. MIT licence. Built on Handy by CJ Pais.</span>
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a class="brand brand-sm" href="#top" aria-label="Lipik home">
+        <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><g stroke="currentColor" stroke-linecap="round" fill="none"><path d="M3 5.4h18" stroke-width="2.6"/><path d="M6.5 6.4v4.6M10.5 6.4v11.6M14.5 6.4v7.4M18.5 6.4v3" stroke-width="2.3"/></g></svg>
+        <span>Lipik</span>
+      </a>
+      <p>Free and open source under the MIT licence. Built on <a href="https://github.com/cjpais/Handy">Handy</a> by CJ Pais.</p>
+    </div>
   </footer>
 
   <script src="main.js"></script>
