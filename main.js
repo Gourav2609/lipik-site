@@ -333,7 +333,7 @@ function radioGroup(group, onPick) {
 
 /* Tone */
 const TONES = {
-  formal: "Hi, are we still on for Friday? I can bring the slides.",
+  formal: "Hey, are we still good for Friday? I can bring the slides.",
   relaxed: "Hey, are we still good for Friday? I can bring the slides",
   lower: "hey are we still good for friday? i can bring the slides",
 };
