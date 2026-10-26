@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lipik: speak, and it writes it down</title>
+  <meta name="description" content="Hold fn, speak, and clean text lands wherever you are typing. Free, open source, and your voice stays on your Mac.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,400..650&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav wrap">
+    <a class="brand" href="#top" aria-label="Lipik home">
+      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><g stroke="currentColor" stroke-linecap="round" fill="none"><path d="M3 5.4h18" stroke-width="2.6"/><path d="M6.5 6.4v4.6M10.5 6.4v11.6M14.5 6.4v7.4M18.5 6.4v3" stroke-width="2.3"/></g></svg>
+      <span>Lipik</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#how">How it works</a>
+      <a href="#features">What it does</a>
+      <a href="#private">Privacy</a>
+      <a href="#faq">Questions</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#download">Download for Mac</a>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="rule" aria-hidden="true"></div>
+      <div class="headline-block">
+        <h1 class="hang">
+          <span>Speak.</span>
+          <span>Lipik writes</span>
+          <span>it down.</span>
+        </h1>
+        <p class="lede">Hold <kbd>fn</kbd>, say it however it comes out, and clean text lands wherever you're typing. In any app, in English or Hinglish.</p>
+        <div class="cta-row">
+          <a class="btn btn-ink" href="#download">Download for Mac</a>
+          <a class="btn btn-quiet" href="#how">See how it works</a>
+        </div>
+        <p class="fineprint">Free and open source. Your voice stays on your Mac.</p>
+      </div>
+
+      <figure class="demo" aria-label="Lipik turning spoken words into clean text">
+        <div class="window">
+          <div class="window-bar">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="app" id="demo-app">Slack · #launch</span>
+          </div>
+          <div class="window-body">
+            <div class="thread" aria-hidden="true">
+              <div class="msg"><b>Meera</b><span>Are we still on for the call today?</span></div>
+            </div>
+            <div class="said" id="demo-said" aria-live="off"></div>
+            <div class="compose">
+              <span class="typed" id="demo-typed"></span><span class="caret" aria-hidden="true"></span>
+              <span class="placeholder" id="demo-ph">Message #launch</span>
+            </div>
+          </div>
+          <div class="pill-zone" aria-hidden="true">
+            <div class="pill" id="demo-pill" data-state="idle">
+              <span class="dot"></span>
+              <span class="bars"></span>
+              <span class="spin"></span>
+            </div>
+          </div>
+        </div>
+        <figcaption id="demo-caption">What you said, and what Lipik typed.</figcaption>
+      </figure>
+    </section>
+
+    <section class="messy wrap" aria-labelledby="messy-h">
+      <h2 id="messy-h">Say it messy. It comes out clean.</h2>
+      <p class="section-lede">Lipik drops the ums, keeps the change of mind, and fixes punctuation, numbers and email addresses. It never adds words you didn't say.</p>
+      <ul class="pairs">
+        <li>
+          <p class="spoken">hey can we, <s>um,</s> move the call to <s>four, no,</s> five</p>
+          <p class="written">Hey, can we move the call to 5?</p>
+        </li>
+        <li>
+          <p class="spoken">send it to rivaan underscore m at quavia dot com</p>
+          <p class="written">Send it to rivaan_m@quavia.com</p>
+        </li>
+        <li>
+          <p class="spoken">meet at three thirty pm tomorrow</p>
+          <p class="written">Meet at 3:30 PM tomorrow.</p>
+        </li>
+        <li>
+          <p class="spoken"><s>uh</s> kal ka demo friday ko shift kar dete hain</p>
+          <p class="written">Kal ka demo Friday ko shift kar dete hain.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="how wrap" id="how" aria-labelledby="how-h">
+      <h2 id="how-h">How it works</h2>
+      <ol class="steps">
+        <li>
+          <span class="n">1</span>
+          <h3>Hold <kbd>fn</kbd></h3>
+          <p>Put your cursor where the text should go: a message, an email, a doc, a prompt. Hold the fn key.</p>
+        </li>
+        <li>
+          <span class="n">2</span>
+          <h3>Speak</h3>
+          <p>Talk the way you'd talk to a friend. Pause, ramble, correct yourself. The small bar at the bottom of your screen shows it's listening.</p>
+        </li>
+        <li>
+          <span class="n">3</span>
+          <h3>Let go</h3>
+          <p>About half a second later the cleaned-up text is typed in. If there's no text box, Lipik shows it in a card so you can copy it.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="features wrap" id="features" aria-labelledby="features-h">
+      <h2 id="features-h">What it does</h2>
+      <dl class="feature-list">
+        <div><dt>Works in every app</dt><dd>Slack, Mail, Notes, your browser, your code editor. Anywhere you can type.</dd></div>
+        <div><dt>Cleans up as it types</dt><dd>Removes fillers, applies "no, wait" corrections, and writes numbers, times and emails the way you'd type them.</dd></div>
+        <div><dt>Your words, spelled right</dt><dd>Add names and terms once, like Kubernetes or Thiruvananthapuram, and they come out right every time.</dd></div>
+        <div><dt>Snippets</dt><dd>Say "my address" or "meeting link" and get the full text you saved.</dd></div>
+        <div><dt>Tone per app</dt><dd>Relaxed in chat, proper in email. You choose for each kind of app.</dd></div>
+        <div><dt>Meeting notes</dt><dd>Record a call and get a transcript and a short summary, made on your Mac.</dd></div>
+        <div><dt>Hinglish, in Roman letters <span class="tag">Beta</span></dt><dd>Mix Hindi and English the way you speak. Lipik writes it in Roman letters, not Devanagari.</dd></div>
+        <div><dt>Hands-free</dt><dd>Press fn and Space to keep talking without holding a key.</dd></div>
+      </dl>
+    </section>
+
+    <section class="private" id="private" aria-labelledby="private-h">
+      <div class="wrap private-inner">
+        <h2 id="private-h">Your voice never leaves your Mac.</h2>
+        <div class="private-copy">
+          <p>Speech is turned into text by a model that runs on your Mac. The clean-up runs on your Mac too. Nothing is uploaded, there's no account, and it keeps working with Wi-Fi off.</p>
+          <ul class="facts">
+            <li><b>Speech model</b><span>Parakeet, running on your Mac's GPU</span></li>
+            <li><b>Clean-up</b><span>Qwen3 8B through Ollama, on your Mac</span></li>
+            <li><b>Your history</b><span>Saved in a file on your Mac. Delete it any time.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="open wrap" aria-labelledby="open-h">
+      <h2 id="open-h"><span class="deva" lang="hi">लिपिक</span> means scribe.</h2>
+      <p class="section-lede">Lipik is free and open source under the MIT licence. It's built on <a href="https://github.com/cjpais/Handy">Handy</a> by CJ Pais, a free dictation app, with a new interface, text clean-up, Hinglish support and meeting notes added on top.</p>
+    </section>
+
+    <section class="faq wrap" id="faq" aria-labelledby="faq-h">
+      <h2 id="faq-h">Questions</h2>
+      <div class="faq-list">
+      <details>
+        <summary>What do I need?</summary>
+        <p>A Mac with Apple silicon (M1 or later). For the clean-up step, the free <a href="https://ollama.com">Ollama</a> app with the Qwen3 8B model, about 5 GB. Without it, Lipik still types what you said, with simple fixes for punctuation and numbers.</p>
+      </details>
+      <details>
+        <summary>Does it cost anything?</summary>
+        <p>No. There's no subscription, no word limit and no account.</p>
+      </details>
+      <details>
+        <summary>Does it work on Windows?</summary>
+        <p>Not yet. Lipik is Mac-only for now.</p>
+      </details>
+      <details>
+        <summary>How good is Hinglish?</summary>
+        <p>It's in beta. English is the most accurate today. Hinglish works best when you speak clearly and close to the microphone, and it's improving with each release.</p>
+      </details>
+      <details>
+        <summary>Why does macOS ask for Microphone and Accessibility?</summary>
+        <p>Microphone so Lipik can hear you, and Accessibility so it can type into other apps and notice when you hold fn. Lipik doesn't send what it hears anywhere.</p>
+      </details>
+      <details>
+        <summary>Can I change the key?</summary>
+        <p>Yes. Pick any shortcut in Settings. Holding fn is the default because it doesn't get in the way of anything else.</p>
+      </details>
+      </div>
+    </section>
+
+    <section class="download wrap" id="download" aria-labelledby="download-h">
+      <img src="assets/icon.png" alt="" width="96" height="96">
+      <h2 id="download-h">Lipik for Mac</h2>
+      <p>Lipik is in private testing. The first public build and the source code are coming soon.</p>
+      <span class="btn btn-ink is-off" aria-disabled="true">Download coming soon</span>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <span>Lipik. MIT licence. Built on Handy by CJ Pais.</span>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
