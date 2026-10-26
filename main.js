@@ -64,47 +64,51 @@ if (reduced) {
   requestAnimationFrame(drawWaves);
 }
 
-/* Hero: a small Mac desktop where Lipik types into a different app each round */
+/* Hero: a MacBook screen where Lipik types into a different app each round */
+const stage = $("#stage");
 const screen = $("#screen");
 const frame = $("#screen-frame");
+const clip = $("#screen-clip");
 
 function fitScreen() {
-  const pad = parseFloat(getComputedStyle(frame).paddingLeft);
-  const inner = frame.clientWidth - pad * 2;
-  screen.classList.toggle("is-compact", inner < 640);
-  const w = screen.classList.contains("is-compact") ? 420 : 1120;
-  const h = screen.classList.contains("is-compact") ? 560 : 680;
+  const cs = getComputedStyle(frame);
+  const padX = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+  const padY = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+  const inner = frame.clientWidth - padX;
+  const compact = inner < 640;
+  screen.classList.toggle("is-compact", compact);
+  stage.classList.toggle("is-compact", compact);
+  const [w, h] = compact ? [420, 560] : [1120, 700];
   const s = inner / w;
   screen.style.setProperty("--s", s);
-  frame.style.height = `${h * s + pad * 2}px`;
+  clip.style.height = `${h * s}px`;
+  frame.style.height = `${h * s + padY}px`;
 }
 new ResizeObserver(fitScreen).observe(frame);
 fitScreen();
 
+const SAFARI_MENUS = "File Edit View History Bookmarks Window Help";
 const SCENES = [
   {
-    win: "chat",
+    win: "slack",
     app: "Slack",
+    menus: "File Edit View Go Window Help",
     said: "hey can we, ~um, move the call to ^four, ^no, =five",
     typed: "Hey, can we move the call to 5?",
   },
   {
-    win: "mail",
-    app: "Mail",
+    win: "gmail",
+    app: "Safari",
+    menus: SAFARI_MENUS,
     said: "~uh send it to rivaan =underscore m =at quavia =dot com",
     typed: "Send it to rivaan_m@quavia.com",
   },
   {
-    win: "notes",
-    app: "Notes",
-    said: "~euh je prends le train de ^huit ^heures, ^non, de =neuf heures",
-    typed: "Je prends le train de 9 heures.",
-  },
-  {
-    win: "dm",
-    app: "WhatsApp",
-    said: "yaar kal ka standup, ~um, =ten baje rakh lete hain",
-    typed: "Yaar, kal ka standup 10 baje rakh lete hain.",
+    win: "claude",
+    app: "Safari",
+    menus: SAFARI_MENUS,
+    said: "can you, ~um, summarise this meeting for the ^team, ^no, for the clients in =five bullet points",
+    typed: "Can you summarise this meeting for the clients in 5 bullet points?",
   },
 ];
 
@@ -113,11 +117,19 @@ const said = $("#said");
 const saidWords = $("#said-words");
 const fnKey = $("#fn-key");
 const mbApp = $("#mb-app");
+const mbMenus = $("#mb-menus");
 const mbLipik = $("#mb-lipik");
 
 function showWindow(scene) {
   $$(".win", screen).forEach((w) => w.classList.toggle("is-on", w.dataset.win === scene.win));
   mbApp.textContent = scene.app;
+  mbMenus.replaceChildren(
+    ...scene.menus.split(" ").map((m) => {
+      const span = document.createElement("span");
+      span.textContent = m;
+      return span;
+    })
+  );
   const field = $(`[data-win="${scene.win}"] .field`, screen);
   $(".slot", field).textContent = "";
   field.classList.remove("has-text");
@@ -170,12 +182,16 @@ async function playScene(scene) {
   await wait(2600);
 }
 
-if (reduced) {
-  const field = showWindow(SCENES[0]);
-  fill(saidWords, wordSpans(SCENES[0].said));
+// ?scene=N shows that scene's finished state without motion, for screenshots.
+const shot = new URLSearchParams(location.search).get("scene");
+if (reduced || shot !== null) {
+  const scene = SCENES[shot] || SCENES[0];
+  if (shot !== null) document.documentElement.classList.add("is-shot");
+  const field = showWindow(scene);
+  fill(saidWords, wordSpans(scene.said));
   $$(".w", saidWords).forEach((w) => w.classList.add("on"));
   said.classList.add("is-on", "is-struck");
-  land(field, SCENES[0].typed);
+  land(field, scene.typed);
 } else {
   (async () => {
     await wait(1300);
