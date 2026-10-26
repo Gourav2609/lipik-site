@@ -2504,3 +2504,10 @@ kbd {
     padding: 22px;
   }
 }
+
+.dl-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
